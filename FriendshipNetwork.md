@@ -1,6 +1,6 @@
--- Code for this project can be viewed at: https://github.com/cjsharp4/TwitterFriendshipAnalysis --
+<h1 align="center">Social Media Data Analysis</h1>
 
-Social Media Data Analysis
+-- Code for this project can be viewed at: https://github.com/cjsharp4/TwitterFriendshipAnalysis --
 
 For my project, I used the Tweepy library to utilize Twitter’s API. I scraped data from my personal Twitter account to get my follower and friend relationships, along with their relationship to each other. Twitter’s limited data rates allowed for only 150 friendship comparisons every 15 minutes. In order to get every friend relationship, I needed to sleep my python script after 150 API calls for 15 minutes. This made the data scraping process take about 12 hours after optimizing the methods used to lower the amount of API calls made.
 
