@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+    canvas { background: PapayaWhip; }
+</style>
+
+<canvas id="gl-canvas" width="500" height="500" style="border:2px solid #000000;">
+    Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec3 vPosition;
+attribute vec3 vNormal;
+
+varying vec4 fColor;
+
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec4 lightPosition;
+uniform float shininess; 
+
+
+void
+main()
+{
+	//By: Carson Sharp
+	
+	vec4 pos4D = vec4(vPosition, 1.0);
+	vec4 nor4D = vec4(vNormal, 0.0);
+	
+	
+	
+      //compute lighting in eye coordinates
+    vec3 pos = (modelViewMatrix * pos4D).xyz;
+	// input light has been defined in eye coords in js
+    vec3 light = lightPosition.xyz;
+    vec3 L = normalize( light - pos );
+
+	// eye coordinates assumes eye at origin
+	vec3 eyePoint = vec3(0.0, 0.0, 0.0);
+	vec3 E = normalize( eyePoint - pos );
+
+    // halfway vector
+    vec3 H = normalize( L + E );
+	
+    // Transform vertex normal into eye coordinates
+    vec3 N = normalize( (modelViewMatrix*nor4D).xyz);
+
+    // Compute terms in the illumination equation
+    vec4 ambient = ambientProduct;
+
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+	
+	// play: this is how you might do debugging; 
+	//setting colors on condition
+	//if(dot(L, N) < 0.0) diffuse = vec4(1.0, 0.0, 0.0, 1.0);
+
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+    
+    if( dot(L, N) < 0.0 ) {
+	specular = vec4(0.0, 0.0, 0.0, 1.0);
+    } 
+	
+	// play  
+	//diffuse = vec4(0.0, 0.0, 0.0, 1.0);
+	//ambient = vec4(0.0, 0.0, 0.0, 1.0);
+	//specular = vec4(0.0, 0.0, 0.0, 1.0);
+	
+	
+    fColor = ambient + diffuse +specular;
+	fColor.a = 1.0;
+	
+    gl_Position = projectionMatrix * modelViewMatrix * pos4D;
+
+    
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+
+    gl_FragColor = fColor;
+
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="sharp_hw3.js"></script>
+<script type="text/javascript" src="sharp_geometry.js"></script>
+
+
+<body style="font-family:verdana;">
+
+
+<div>
+<td></td><button id = "Cylinder">Cylinder</button></td>
+</div>
+
+<div>
+<td></td><button id = "Horn">Horn</button></td>
+</div>
+
+<div>
+<td></td><button id = "HighResolution">High Resolution</button></td>
+</div>
+
+<div>
+<td></td><button id = "LowResolution">Low Resolution</button></td>
+</div>
+
+<div>
+<td></td><button id = "Original">Original</button></td>
+</div>
+
+<div>
+<td></td><button id = "Jade">Jade</button></td>
+</div>
+
+<div>
+<td></td><button id = "GreenPlastic">Green Plastic</button></td>
+</div>
+
+<div>
+<td></td><button id = "Obsidian">Obsidian</button></td>
+</div>
+
+<div>
+<td></td><button id = "OffWhite">Off White</button></td>
+</div>
+
+
+<div>
+FOV: 10 degrees <input id="fovSlider" type="range"
+min="10" max="100" step="10" value="60" />
+100 degrees <br>
+</div>
+
+<br>
+
+
+<div >
+LookAt parameters:
+<h4 id="lookEye"></h4>
+<h4 id="lookAt"></h4>
+<h4 id="lookUp"></h4>
+</div>
+
+<div>
+By: Carson Sharp    
+<br>Date: 3/24/21
+<br>
+<br>Project Description:
+<ul>
+<li>Cylinder and Horn Shape centered at origin</li>
+<li>Use buttons to choose between the 2 SORS</li>
+<li>Use mouse to look around the 3D object</li>
+<li>Vertices calculated by formulas given in class</li>
+<li>True normals calculated from vertices (see geometry file)</li>
+<li>Triangulation data structure points to correct vertices to form triangles</li>
+<li>2 Resolutions implemented (Height and Rows can easily be modified in the code) </li>
+<li>5 different material properties to apply</li>
+<li>Phong Illumination Model utilized for material properties</li>
+<li>Use FOV slider to zoom in and out</li>
+<li>Implements drawElements() function</li>
+</ul>
+Resources:
+<br>
+March 18th Lecture, MV.js , cubev.js , shadedsphere1.js , and mousy program
+<br>
+<br>
+</div>
+</body>
+</html>
