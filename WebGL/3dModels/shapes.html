@@ -5,10 +5,6 @@
     canvas { background: PapayaWhip; }
 </style>
 
-<canvas id="gl-canvas" width="500" height="500" style="border:2px solid #000000;">
-    Oops ... your browser doesn't support the HTML5 canvas element
-</canvas>
-
 <script id="vertex-shader" type="x-shader/x-vertex">
 
 attribute vec3 vPosition;
@@ -104,8 +100,18 @@ main()
 <script type="text/javascript" src="geometry.js"></script>
 
 
-<body style="font-family:verdana;">
+<body style="font-family:'Helvetica', 'Arial', sans-serif;">
 
+<link rel="stylesheet" href="../../styles.css">
+
+<ul>
+  <li><a href="../../index.html">Home</a></li>
+  <li><a href="../projects.html">WebGL</a></li>
+  <li><a href="https://cjsharp4.github.io/FriendshipNetwork">Twitter Analysis</a></li>
+  <li><a href="../../WordFinder/home.html">Word Scraper</a></li>
+</ul>
+
+<br> 
 
 <div>
 <td></td><button id = "Cylinder">Cylinder</button></td>
@@ -145,6 +151,11 @@ main()
 
 <br>
 
+
+<canvas id="gl-canvas" width="500" height="500" style="border:2px solid #000000;">
+    Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
 <div>
 FOV: 10 degrees <input id="fovSlider" type="range"
 min="10" max="100" step="10" value="60" />
@@ -162,8 +173,8 @@ LookAt parameters:
 </div>
 
 <div>
-<br>Project Description:
-<ul>
+Project Description:
+<ul style="background-color:white;">
 <li>Cylinder and Horn Shape centered at origin</li>
 <li>Use buttons to choose between the 2 SORS</li>
 <li>Use mouse to look around the 3D object</li>
@@ -178,5 +189,6 @@ LookAt parameters:
 </ul>
 <br>
 </div>
+
 </body>
 </html>

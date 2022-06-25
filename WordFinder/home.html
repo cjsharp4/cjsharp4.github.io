@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+
+    <title>Word Finder</title>
+
+    <style>
+        body{
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../WebGL/projects.html">WebGL</a></li>
+        <li><a href="https://cjsharp4.github.io/FriendshipNetwork">Twitter Analysis</a></li>
+        <li><a href="./home.html">Word Scraper</a></li>
+    </ul>
+
+    <h1>Word Finder</h1>
+    
+    <p>Get a video of any word being used in a sentence. Videos are scraped from YouTube using Python and hosted on localhost using Node.js and Express.js.</p>
+
+    Project code and installation tutorial can be found on
+    <a href="https://github.com/cjsharp4/youtube-word-finder"> my GitHub page</a>
+
+    <br> </br>
+
+    <div>
+        <video id="video" width="600" height="400" controls>
+            <source src="street.mp4" type="video/mp4">
+            <source src="street.mov" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <script>
+            var video = document.getElementById("video");
+            video.volume = 0.05;
+        </script>
+    </div>
+
+</body>
+</html>

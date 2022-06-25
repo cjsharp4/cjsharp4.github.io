@@ -5,17 +5,27 @@
 </style>
 
 
-<canvas id="gl-canvas" width="300" height="300" style="border:2px solid #000000;">
-Oops ... your browser doesn't support the HTML5 canvas element
-</canvas>
+<div style="font-family:'Helvetica', 'Arial', sans-serif;";>
 
-<div style="font-family:verdana";>
-Click canvas to pick a cube.
+
+<link rel="stylesheet" href="../../styles.css">
+
+<ul>
+  <li><a href="../../index.html">Home</a></li>
+  <li><a href="../projects.html">WebGL</a></li>
+  <li><a href="https://cjsharp4.github.io/FriendshipNetwork">Twitter Analysis</a></li>
+  <li><a href="../../WordFinder/home.html">Word Scraper</a></li>
+</ul>
+
+<br>
+To start, set a rotation speed and click the canvas to pick a cube.
 </br>
-<table style "width:50%">
+
+<br>
+
+<table align="width:50%">
 <tr>
  <td><button id = "ButtonIdentity">reset center cube</button></td>
- <td><button onclick="location.href = '../projects.html';" id="homeButton" class="float-left submit-button" >Other Projects</button></td>
  </tr>
  <tr>
 
@@ -63,6 +73,11 @@ main()
 
 <body>
 
+
+<canvas id="gl-canvas" width="300" height="300" style="border:2px solid #000000;">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
 <div>
 scale cube 10% <input id="slider2" type="range"
  min=".1" max="1" step=".1" value=".2" />
@@ -77,8 +92,7 @@ rotation speed 10% <input id="slider" type="range"
 </div>
 
 <body>
-<!--HW470: Add text to communicate what program does -->
-<div style="font-family:verdana";>
+<div style="font-family:'Helvetica', 'Arial', sans-serif;";>
 <h1>Pick a Cube</h1>
     
 
