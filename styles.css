@@ -1,9 +1,17 @@
+
+body {
+  padding: 25px;
+  background-color: #181a21;
+  color: #f8fafc;
+  font-size: 25 px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #121317;
   }
   
   li {
@@ -18,7 +26,7 @@ ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
+  /* Change the link color to #262a31 when element is hovered over */
   li a:hover {
-    background-color: #111;
+    background-color: #262a31;
   }
